@@ -41,8 +41,8 @@ export default function TextForm(props) {
         <div className="mb-3">
             <textarea className="form-control" value={text} onChange={changeHand} id="clip-box" rows="8"></textarea>
         </div>
-        <button onClick={handleUpper} className="btn btn-primary mx-2">Change to UpperCase</button>
-        <button onClick={clipit} className="btn btn-primary" >Copy to Clipboard</button>
+        <button disabled={text.length === 0} onClick={handleUpper} className="btn btn-primary mx-1 my-1">Change to UpperCase</button>
+        <button disabled={text.length === 0} onClick={clipit} className="btn btn-primary mx-1 my-1" >Copy to Clipboard</button>
     </div>
     <div className="container my-3">
         <h1>Your Text Summary</h1>
