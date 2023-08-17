@@ -40,7 +40,7 @@ function App() {
   return (
     <>
     <Router>
-    <Navbar title="TextUtils" aboutText ="About TextUtils" mode={mode} btnChange={btnChange} />
+    <Navbar title="Textify" aboutText ="About TextUtils" mode={mode} btnChange={btnChange} />
     <Alert alert={alert}/>
     <div className="container my-3">
       <Routes>

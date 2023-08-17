@@ -9,14 +9,14 @@ export default function TextForm(props) {
         }
         return c;
     }
-    const fun2 = (words) => {
-        let c = 0;
-        if(words.length === 0)return 0;
-        for (let i = 0; i < words.length-1; i++) {
-            if(words[i] === ' ' && words[i+1] !== ' ')c++;
-        }
-        return c+1;
-    }
+    // const fun2 = (words) => {
+    //     let c = 0;
+    //     if(words.length === 0)return 0;
+    //     for (let i = 0; i < words.length-1; i++) {
+    //         if(words[i] === ' ' && words[i+1] !== ' ')c++;
+    //     }
+    //     return c+1;
+    // }
     const handleUpper = () => {
         let newText = text.toUpperCase();
         setText(newText);
@@ -24,15 +24,13 @@ export default function TextForm(props) {
     }
     const clipit = () => {
         let txt = document.getElementById('clip-box');
-        txt.select();
-        txt.setSelectionRange(0,9999);
         navigator.clipboard.writeText(txt.value);
         props.showAlert('Copied to ClipBoard','success');
     }
     const changeHand = (event) => {
         setText(event.target.value);
     } 
-    const [text,setText] = useState('');  
+    const [text,setText] = useState('');
     
   return (
     <>
@@ -46,8 +44,8 @@ export default function TextForm(props) {
     </div>
     <div className="container my-3">
         <h1>Your Text Summary</h1>
-        <p>{fun2(text)} words and {fun1(text)} charactors</p>
-        <p>{0.008 * fun2(text)} Minutes read</p>
+        <p>{text.split(/\s+/).filter((ele) => ele.length !== 0).length} words and {fun1(text)} charactors</p>
+        <p>{0.008 * text.split(/\s+/).filter((ele) => ele.length !== 0).length} Minutes read</p>
         <h2>Preview</h2>
         <p>{text}</p>
     </div>
